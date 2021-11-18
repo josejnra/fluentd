@@ -1,0 +1,25 @@
+version: '3.7'
+
+services:
+
+  fluentd:
+    image: fluentd:v1.14-1
+    hostname: fluentd
+    container_name: fluentd
+    ports:
+      - 24224:24224
+      - 24224:24224/udp
+    volumes:
+      - ./log:/fluentd/log
+  
+  fluentd-ui:
+    image: fluentd-ui:1.0.0
+    build:
+      context: .
+      dockerfile: Dockerfile
+    hostname: fluentd
+    container_name: fluentd-ui
+    ports:
+      - 9292:9292
+  # user: admin
+  # password: changeme
