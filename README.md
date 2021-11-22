@@ -93,5 +93,16 @@ The configuration file can be validated without starting the plugins using the `
 fluentd --dry-run -c fluent.conf
 ```
 
+### Docker Example
+After setting up the `in_http.conf`, run the following command:
+```shell
+curl -i -X POST -d 'json={"action":"login","user":2}' http://localhost:8888/test.cycle
+```
+Other possible commands:
+```shell
+curl -i -X POST -d 'json={"action":"logout","user":2}' http://localhost:8888/test.cycle
+curl -i -X POST -d 'json={"action":"login","user":2}' http://localhost:8888/test.cycle
+```
+
 ## Referencies
 - [Overview](https://docs.fluentd.org/quickstart)
